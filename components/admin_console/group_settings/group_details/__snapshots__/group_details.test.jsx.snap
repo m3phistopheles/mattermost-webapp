@@ -5,8 +5,12 @@ exports[`components/admin_console/group_settings/group_details/GroupDetails shou
   className="wrapper--fixed"
 >
   <h3
-    className="admin-console-header"
+    className="admin-console-header with-back"
   >
+    <Connect(BlockableLink)
+      className="fa fa-angle-left back"
+      to="/admin_console/access-control/groups"
+    />
     <FormattedMessage
       defaultMessage="Group Configuration"
       id="admin.group_settings.group_detail.group_configuration"
@@ -150,8 +154,12 @@ exports[`components/admin_console/group_settings/group_details/GroupDetails shou
   className="wrapper--fixed"
 >
   <h3
-    className="admin-console-header"
+    className="admin-console-header with-back"
   >
+    <Connect(BlockableLink)
+      className="fa fa-angle-left back"
+      to="/admin_console/access-control/groups"
+    />
     <FormattedMessage
       defaultMessage="Group Configuration"
       id="admin.group_settings.group_detail.group_configuration"
@@ -300,8 +308,12 @@ exports[`components/admin_console/group_settings/group_details/GroupDetails shou
   className="wrapper--fixed"
 >
   <h3
-    className="admin-console-header"
+    className="admin-console-header with-back"
   >
+    <Connect(BlockableLink)
+      className="fa fa-angle-left back"
+      to="/admin_console/access-control/groups"
+    />
     <FormattedMessage
       defaultMessage="Group Configuration"
       id="admin.group_settings.group_detail.group_configuration"
@@ -439,8 +451,12 @@ exports[`components/admin_console/group_settings/group_details/GroupDetails shou
   className="wrapper--fixed"
 >
   <h3
-    className="admin-console-header"
+    className="admin-console-header with-back"
   >
+    <Connect(BlockableLink)
+      className="fa fa-angle-left back"
+      to="/admin_console/access-control/groups"
+    />
     <FormattedMessage
       defaultMessage="Group Configuration"
       id="admin.group_settings.group_detail.group_configuration"
@@ -567,8 +583,12 @@ exports[`components/admin_console/group_settings/group_details/GroupDetails shou
   className="wrapper--fixed"
 >
   <h3
-    className="admin-console-header"
+    className="admin-console-header with-back"
   >
+    <Connect(BlockableLink)
+      className="fa fa-angle-left back"
+      to="/admin_console/access-control/groups"
+    />
     <FormattedMessage
       defaultMessage="Group Configuration"
       id="admin.group_settings.group_detail.group_configuration"
