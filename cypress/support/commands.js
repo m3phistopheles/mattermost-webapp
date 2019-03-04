@@ -227,6 +227,11 @@ Cypress.Commands.add('getLastPostId', () => {
 Cypress.Commands.add('clickPostTime', (postId, location = 'CENTER') => {
     if (postId) {
         cy.get(`#post_${postId}`).trigger('mouseover');
+        cy.get(`#${location}_time_${postId}`).click({force: true});
+    } else {
+        cy.getLastPostId().then((lastPostId) => {
+            cy.get(`#post_${lastPostId}`).trigger('mouseover');
+            cy.get(`#${location}_time_${lastPostId}`).click({force: true});
         cy.get(`#CENTER_time_${postId}`).click({
             force: true
         });
@@ -248,6 +253,11 @@ Cypress.Commands.add('clickPostTime', (postId, location = 'CENTER') => {
 Cypress.Commands.add('clickPostFlagIcon', (postId, location = 'CENTER') => {
     if (postId) {
         cy.get(`#post_${postId}`).trigger('mouseover');
+        cy.get(`#${location}_flagIcon_${postId}`).click({force: true});
+    } else {
+        cy.getLastPostId().then((lastPostId) => {
+            cy.get(`#post_${lastPostId}`).trigger('mouseover');
+            cy.get(`#${location}_flagIcon_${lastPostId}`).click({force: true});
         cy.get(`#centerPostFlag_${postId}`).click({
             force: true
         });
@@ -269,6 +279,11 @@ Cypress.Commands.add('clickPostFlagIcon', (postId, location = 'CENTER') => {
 Cypress.Commands.add('clickPostDotMenu', (postId, location = 'CENTER') => {
     if (postId) {
         cy.get(`#post_${postId}`).trigger('mouseover');
+        cy.get(`#${location}_button_${postId}`).click({force: true});
+    } else {
+        cy.getLastPostId().then((lastPostId) => {
+            cy.get(`#post_${lastPostId}`).trigger('mouseover');
+            cy.get(`#${location}_button_${lastPostId}`).click({force: true});
         cy.get(`#CENTER_button_${postId}`).click({
             force: true
         });
@@ -290,6 +305,11 @@ Cypress.Commands.add('clickPostDotMenu', (postId, location = 'CENTER') => {
 Cypress.Commands.add('clickPostReactionIcon', (postId, location = 'CENTER') => {
     if (postId) {
         cy.get(`#post_${postId}`).trigger('mouseover');
+        cy.get(`#${location}_reaction_${postId}`).click({force: true});
+    } else {
+        cy.getLastPostId().then((lastPostId) => {
+            cy.get(`#post_${lastPostId}`).trigger('mouseover');
+            cy.get(`#${location}_reaction_${lastPostId}`).click({force: true});
         cy.get(`#CENTER_reaction_${postId}`).click({
             force: true
         });
@@ -312,6 +332,11 @@ Cypress.Commands.add('clickPostReactionIcon', (postId, location = 'CENTER') => {
 Cypress.Commands.add('clickPostCommentIcon', (postId, location = 'CENTER') => {
     if (postId) {
         cy.get(`#post_${postId}`).trigger('mouseover');
+        cy.get(`#${location}_commentIcon_${postId}`).click({force: true});
+    } else {
+        cy.getLastPostId().then((lastPostId) => {
+            cy.get(`#post_${lastPostId}`).trigger('mouseover');
+            cy.get(`#${location}_commentIcon_${lastPostId}`).click({force: true});
         cy.get(`#commentIcon_${postId}`).click({
             force: true
         });

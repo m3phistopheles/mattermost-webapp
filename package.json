@@ -115,6 +115,8 @@
     "webpack-cli": "3.2.3",
     "webpack-node-externals": "1.7.2",
     "webpack-pwa-manifest": "4.0.0",
+    "yup": "0.26.10",
+    "mocha-junit-reporter": "1.18.0
     "yup": "0.26.10"
   },
   "jest": {
