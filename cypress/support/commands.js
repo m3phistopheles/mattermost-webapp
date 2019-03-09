@@ -384,7 +384,7 @@ Cypress.Commands.add('minDisplaySettings', () => {
 
 // Selects Edit Theme, selects Custom Theme, checks display, selects custom drop-down for color options
 Cypress.Commands.add('customColors', (dropdownInt, dropdownName) => {
-    cy.get('#themeEdit').click();
+    cy.get('#themeEdit').scrollIntoView().click();
 
     cy.get('#customThemes').click();
 
