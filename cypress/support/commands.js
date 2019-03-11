@@ -350,10 +350,6 @@ Cypress.Commands.add('removeTeamMember', (teamURL, username) => {
     cy.focused().type(username, {
         force: true
     });
-    cy.get('#removeFromTeam').click({
-        force: true
-    });
-    cy.get('.modal-header .close').click();
 });
 
 // ***********************************************************
