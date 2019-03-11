@@ -13,6 +13,11 @@ describe('Account Settings > Display > Theme Colors > Custom Theme > Sidebar Sty
         cy.toAccountSettingsModal('user-1');
     });
 
+    after(() => {
+        // * Revert any color changes made by selecting the default Mattermost theme
+        cy.defaultTheme('user-1');
+    });
+
     it('should render min setting view', () => {
         // * Check that the Display tab is loaded
         cy.get('#displayButton').should('be.visible');
@@ -43,6 +48,9 @@ describe('Account Settings > Display > Theme Colors > Custom Theme > Sidebar Sty
         // * Check Sidebar BG color icon change
         cy.get('.color-icon').eq(0).should('have.css', 'background-color', 'rgb(20, 191, 188)');
 
+        // * Check that "sidebarBg" is updated
+        cy.get('#pasteBox').scrollIntoView().should('contain', '"sidebarBg":"#14bfbc"');
+
         // * Check Sidebar BG color change
         cy.get('.settings-links').should('have.css', 'background-color', 'rgb(20, 191, 188)');
 
@@ -68,6 +76,9 @@ describe('Account Settings > Display > Theme Colors > Custom Theme > Sidebar Sty
 
         // * Check Sidebar Text icon color change
         cy.get('.color-icon').eq(1).should('have.css', 'background-color', 'rgb(129, 65, 65)');
+
+        // * Check that "sidebarText" is updated
+        cy.get('#pasteBox').scrollIntoView().should('contain', '"sidebarText":"#814141"');
 
         // * Check Sidebar Text color change
         cy.get('#generalButton').should('have.css', 'color', 'rgba(129, 65, 65, 0.6)');
@@ -95,6 +106,9 @@ describe('Account Settings > Display > Theme Colors > Custom Theme > Sidebar Sty
         // * Check Sidebar Header BG icon color change
         cy.get('.color-icon').eq(2).should('have.css', 'background-color', 'rgb(17, 171, 168)');
 
+        // * Check that "sidebarHeaderBg" is updated
+        cy.get('#pasteBox').scrollIntoView().should('contain', '"sidebarHeaderBg":"#11aba8"');
+
         // * Check Sidebar Header BG color change
         cy.get('#accountSettingsHeader').should('have.css', 'background', 'rgb(17, 171, 168) none repeat scroll 0% 0% / auto padding-box border-box');
 
@@ -121,6 +135,9 @@ describe('Account Settings > Display > Theme Colors > Custom Theme > Sidebar Sty
         // * Check Sidebar Header Text icon color change
         cy.get('.color-icon').eq(3).should('have.css', 'background-color', 'rgb(129, 65, 65)');
 
+        // * Check that "sidebarHeaderTextColor" is updated
+        cy.get('#pasteBox').scrollIntoView().should('contain', '"sidebarHeaderTextColor":"#814141"');
+
         // * Check Sidebar Header Text color change
         cy.get('#accountSettingsTitle').should('have.css', 'color', 'rgb(129, 65, 65)');
 
@@ -146,6 +163,9 @@ describe('Account Settings > Display > Theme Colors > Custom Theme > Sidebar Sty
 
         // * Check Sidebar Unread Text icon color change
         cy.get('.color-icon').eq(4).should('have.css', 'background-color', 'rgb(129, 65, 65)');
+
+        // * Check that "sidebarUnreadText" is updated
+        cy.get('#pasteBox').scrollIntoView().should('contain', '"sidebarUnreadText":"#814141"');
 
         // 5. Save Sidebar Unread Text color change
         cy.get('#saveSetting').click();
@@ -182,17 +202,11 @@ describe('Account Settings > Display > Theme Colors > Custom Theme > Sidebar Sty
         // * Check Sidebar Text Hover BG color icon change
         cy.get('.color-icon').eq(5).should('have.css', 'background-color', 'rgb(69, 191, 191)');
 
+        // * Check that "sidebarTextHoverBg" is updated
+        cy.get('#pasteBox').scrollIntoView().should('contain', '"sidebarTextHoverBg":"#45bfbf"');
+
         // 5. Save Sidebar Text Hover BG color change
         cy.get('#saveSetting').click();
-
-        // * CSS hover is not currently implemented for cypress, unable to find workaround. mouseenter/mouseover does not work with css check
-
-        //  8. Exit user settings
-        // cy.get('#accountSettingsHeader > .close').click();
-
-        // * Check Sidebar Text Hover BG color change
-        // cy.get('#sidebarItem_autem-2').trigger('mouseover, { force: true }');
-        // cy.get('.sidebar-item').should('have.css', 'background-color', 'rgb(69, 191, 191)');
     });
 
     it('should change Sidebar Text Active Border color and verify color change', () => {
@@ -211,28 +225,11 @@ describe('Account Settings > Display > Theme Colors > Custom Theme > Sidebar Sty
         // * Check Sidebar Text Active Border icon color change
         cy.get('.color-icon').eq(6).should('have.css', 'background-color', 'rgb(65, 92, 129)');
 
+        // * Check that "sidebarTextActiveBorder" is updated
+        cy.get('#pasteBox').scrollIntoView().should('contain', '"sidebarTextActiveBorder":"#415c81"');
+
         // 5. Save Sidebar Text Active Border color change
         cy.get('#saveSetting').click();
-
-        // unsure how to identify Sidebar Text Active Border color. Commenting out second half of test.
-
-        // // 6. Exit user settings
-        // cy.get('#accountSettingsHeader > .close').click();
-
-        // // * Check Sidebar Text Active Border
-        // cy.get('.sidebar-item::before').siblings('.active').should('have.css', 'background', 'rgb(65, 92, 129)');
-
-        // // maybe?
-        // cy.get('.active').find('.sidebar-item').should('have.css', 'button:before').and('background', 'rgb(65, 92, 129');
-
-        // // 7. Open sidebar dropdown
-        // cy.get('#sidebarHeaderDropdownButton').click();
-
-        // // 8. Select Account Settings
-        // cy.get('#accountSettings').click();
-
-        // // 9. Click the Display tab
-        // cy.get('#displayButton').click();
     });
 
     it('should change Sidebar Text Active Color and verify color change', () => {
@@ -251,6 +248,9 @@ describe('Account Settings > Display > Theme Colors > Custom Theme > Sidebar Sty
         // * Check Sidebar Text Active Color icon color change
         cy.get('.color-icon').eq(7).should('have.css', 'background-color', 'rgb(129, 65, 65)');
 
+        // * Check that "sidebarTextActiveColor" is updated
+        cy.get('#pasteBox').scrollIntoView().should('contain', '"sidebarTextActiveColor":"#814141"');
+
         // 5. Save Sidebar Text Active Color change
         cy.get('#saveSetting').click();
 
@@ -258,7 +258,7 @@ describe('Account Settings > Display > Theme Colors > Custom Theme > Sidebar Sty
         cy.get('#displayButton').should('have.css', 'color', 'rgb(129, 65, 65)');
     });
 
-    it('should change Online Indicator color  and verify color change', () => {
+    it('should change Online Indicator color and verify color change', () => {
         // 1. Selecting Theme Edit, Custom Theme, and Sidebar Styles dropdown
         cy.customColors(0, 'Sidebar Styles');
 
@@ -274,6 +274,9 @@ describe('Account Settings > Display > Theme Colors > Custom Theme > Sidebar Sty
         // * Check Online Indicator icon color change
         cy.get('.color-icon').eq(8).should('have.css', 'background-color', 'rgb(65, 129, 113)');
 
+        // * Check that "onlineIndicator" is updated
+        cy.get('#pasteBox').scrollIntoView().should('contain', '"onlineIndicator":"#418171"');
+
         // 5. Save Online Indicator color change
         cy.get('#saveSetting').click();
 
@@ -284,7 +287,7 @@ describe('Account Settings > Display > Theme Colors > Custom Theme > Sidebar Sty
         cy.get('.online--icon').should('have.css', 'fill', 'rgb(65, 129, 113)');
     });
 
-    it('should change Away Indicator color  and verify color change', () => {
+    it('should change Away Indicator color and verify color change', () => {
         // 1. Selecting Sidebar Header Dropdown, Account Settings, and Display Settings
         cy.get('#sidebarHeaderDropdownButton').click();
         cy.get('#accountSettings').click();
@@ -305,6 +308,9 @@ describe('Account Settings > Display > Theme Colors > Custom Theme > Sidebar Sty
         // * Check Away Indicator icon color change
         cy.get('.color-icon').eq(9).should('have.css', 'background-color', 'rgb(129, 106, 65)');
 
+        // * Check that "awayIndicator" is updated
+        cy.get('#pasteBox').scrollIntoView().should('contain', '"awayIndicator":"#816a41"');
+
         // 6. Save Away Indicator color change
         cy.get('#saveSetting').click();
 
@@ -321,7 +327,7 @@ describe('Account Settings > Display > Theme Colors > Custom Theme > Sidebar Sty
         cy.userStatus(0);
     });
 
-    it('should change Do Not Disturb Indicator color  and verify color change', () => {
+    it('should change Do Not Disturb Indicator color and verify color change', () => {
         // 1. Selecting Sidebar Header Dropdown, Account Settigns, and Display Settings
         cy.get('#sidebarHeaderDropdownButton').click();
         cy.get('#accountSettings').click();
@@ -342,6 +348,9 @@ describe('Account Settings > Display > Theme Colors > Custom Theme > Sidebar Sty
         // * Check Do Not Disturb Indicator icon color change
         cy.get('.color-icon').eq(10).should('have.css', 'background-color', 'rgb(129, 65, 65)');
 
+        // * Check that "dndIndicator" is updated
+        cy.get('#pasteBox').scrollIntoView().should('contain', '"dndIndicator":"#814141"');
+
         // 6. Save Do Not Disturb Indicator color change
         cy.get('#saveSetting').click();
 
@@ -358,7 +367,7 @@ describe('Account Settings > Display > Theme Colors > Custom Theme > Sidebar Sty
         cy.userStatus(0);
     });
 
-    it('should change Mention Jewel BG color  and verify color change', () => {
+    it('should change Mention Jewel BG color and verify color change', () => {
         // 1. Selecting Sidebar Header Dropdown, Account Settigns, and Display Settings
         cy.get('#sidebarHeaderDropdownButton').click();
         cy.get('#accountSettings').click();
@@ -379,6 +388,9 @@ describe('Account Settings > Display > Theme Colors > Custom Theme > Sidebar Sty
         // * Check Mention Jewel BG icon color change
         cy.get('.color-icon').eq(11).should('have.css', 'background-color', 'rgb(129, 65, 65)');
 
+        // * Check that "mentionBj" is updated
+        cy.get('#pasteBox').scrollIntoView().should('contain', '"mentionBj":"#814141"');
+
         // 6. Save Mention Jewel BG color change
         cy.get('#saveSetting').click();
 
@@ -389,7 +401,7 @@ describe('Account Settings > Display > Theme Colors > Custom Theme > Sidebar Sty
         cy.get('#unreadIndicatorBottom').should('have.css', 'background-color', 'rgb(129, 65, 65)');
     });
 
-    it('should change Mention Jewel Text color  and verify color change', () => {
+    it('should change Mention Jewel Text color and verify color change', () => {
         // 1. Selecting Sidebar Header Dropdown, Account Settigns, and Display Settings
         cy.get('#sidebarHeaderDropdownButton').click();
         cy.get('#accountSettings').click();
@@ -410,6 +422,9 @@ describe('Account Settings > Display > Theme Colors > Custom Theme > Sidebar Sty
         // * Check Mention Jewel Text icon color change
         cy.get('.color-icon').eq(12).should('have.css', 'background-color', 'rgb(65, 92, 129)');
 
+        // * Check that "mentioncolor" is updated
+        cy.get('#pasteBox').scrollIntoView().should('contain', '"mentionColor":"#415c81"');
+
         // 6. Save Mention Jewel Text color change
         cy.get('#saveSetting').click();
 
@@ -418,24 +433,5 @@ describe('Account Settings > Display > Theme Colors > Custom Theme > Sidebar Sty
 
         // * Check Mention Jewel Text color
         cy.get('#unreadIndicatorBottom').should('have.css', 'color', 'rgb(65, 92, 129)');
-    });
-
-    it('should revert any color changes made', () => {
-        // 1. Selecting Sidebar Header Dropdown, Account Settigns, and Display Settings
-        cy.get('#sidebarHeaderDropdownButton').click();
-        cy.get('#accountSettings').click();
-        cy.get('#displayButton').click();
-
-        // 2. Click "Edit" to the right of Theme
-        cy.get('#themeEdit').click();
-
-        // 3. Select Standard Theme
-        cy.get('#standardThemes').click();
-
-        // 4. Select the Mattermost Theme
-        cy.get('.col-xs-6.col-sm-3.premade-themes').first().click();
-
-        // 5. Select the Save button to save changes
-        cy.get('#saveSetting').click();
     });
 });
