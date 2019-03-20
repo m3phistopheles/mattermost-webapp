@@ -427,6 +427,7 @@ export default class NewChannelModal extends React.PureComponent {
                         <Modal.Footer>
                             <button
                                 type='button'
+                                id='cancel'
                                 className='btn btn-link'
                                 onClick={this.props.onModalDismissed}
                                 tabIndex='8'
@@ -440,6 +441,7 @@ export default class NewChannelModal extends React.PureComponent {
                             <button
                                 onClick={this.handleSubmit}
                                 type='submit'
+                                id='createChannel'
                                 className='btn btn-primary'
                                 tabIndex='4'
                             >
