@@ -400,9 +400,9 @@ Cypress.Commands.add('createPrivateChannel', (channelName) => {
 });
 
 Cypress.Commands.add('archiveChannel', (channelName) => {
-   cy.visit('/ad-1/channels/' + channelName);
-   cy.get('#channelHeaderDropdownButton').click();
-   cy.get('#channelArchiveChannel').click();
-   cy.get('.btn.btn-danger').click();
+    cy.visit('/ad-1/channels/' + channelName);
+    cy.get('#channelHeaderDropdownButton').click();
+    cy.get('#channelArchiveChannel').click();
+    cy.get('.btn.btn-danger').click();
 
 });
