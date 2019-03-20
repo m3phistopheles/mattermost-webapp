@@ -376,3 +376,33 @@ Cypress.Commands.add('userStatus', (statusInt) => {
     cy.get('.status-wrapper.status-selector').click();
     cy.get('.MenuItem').eq(statusInt).click();
 });
+
+// ***********************************************************
+// Channel
+// ************************************************************
+
+Cypress.Commands.add('getCurrentChannelId', () => {
+    return cy.get('#channel-header').invoke('attr', 'data-channelid');
+});
+
+Cypress.Commands.add('createPublicChannel', (channelName) => {
+    cy.get('#createPublicChannel').click();
+    cy.get('#public').should('be.checked');
+    cy.get('#newPublicChannelName').focus().type(channelName);
+    cy.get('#createChannel').click();
+});
+
+Cypress.Commands.add('createPrivateChannel', (channelName) => {
+    cy.get('#createPrivateChannel').click();
+    cy.get('#private').should('be.checked');
+    cy.get('#newPrivateChannelName').focus().type(channelName);
+    cy.get('#createChannel').click();
+});
+
+Cypress.Commands.add('archiveChannel', (channelName) => {
+   cy.visit('/ad-1/channels/' + channelName);
+   cy.get('#channelHeaderDropdownButton').click();
+   cy.get('#channelArchiveChannel').click();
+   cy.get('.btn.btn-danger').click();
+
+});

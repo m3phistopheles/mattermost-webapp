@@ -216,6 +216,7 @@ export default class ChangeURLModal extends React.PureComponent {
                                         type='text'
                                         ref='urlinput'
                                         className='form-control'
+                                        id='setURL'
                                         maxLength={Constants.MAX_CHANNELNAME_LENGTH}
                                         onChange={this.onURLChanged}
                                         value={this.state.currentURL}
@@ -231,6 +232,7 @@ export default class ChangeURLModal extends React.PureComponent {
                         <button
                             type='button'
                             className='btn btn-link'
+                            id='closeButtonSetURL'
                             onClick={this.onCancel}
                         >
                             <FormattedMessage
@@ -241,6 +243,7 @@ export default class ChangeURLModal extends React.PureComponent {
                         <button
                             onClick={this.onSubmit}
                             type='submit'
+                            id='createChannelSetURL'
                             className='btn btn-primary'
                             tabIndex='2'
                         >

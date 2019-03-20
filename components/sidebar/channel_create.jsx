@@ -117,6 +117,7 @@ export default class ChannelCreate extends React.PureComponent {
             >
                 <button
                     className='add-channel-btn cursor--pointer style--none'
+                    id='createDirectMessage'
                     onClick={this.props.createDirectMessage}
                 >
                     {'+'}
