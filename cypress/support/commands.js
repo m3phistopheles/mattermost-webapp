@@ -399,10 +399,15 @@ Cypress.Commands.add('createPrivateChannel', (channelName) => {
     cy.get('#createChannel').click();
 });
 
+Cypress.Commands.add('createDirectMessage', (userName) => {
+    cy.get('#directChannel').click();
+    cy.get('#selectItems').focus().type(userName);
+    cy.get('#saveItems').click();
+});
+
 Cypress.Commands.add('archiveChannel', (channelName) => {
     cy.visit('/ad-1/channels/' + channelName);
     cy.get('#channelHeaderDropdownButton').click();
     cy.get('#channelArchiveChannel').click();
     cy.get('.btn.btn-danger').click();
-
 });
