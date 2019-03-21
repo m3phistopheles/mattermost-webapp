@@ -15,7 +15,7 @@ var chance = new Chance();
 
 describe('Creating public channels with different characters and text to verify textarea placeholder', () => {
     // * creating json variable
-    const textJSON = '{"emoji": "💀👻👽", "currency": "¶¥£", "hirigana": "かさたなはまや", "arabic": "ينتبطستبنمش"}';
+    const textJSON = '{"emoji": "💀👻👽", "currency": "¶¥£", "hiragana": "かさたなはまや", "arabic": "ينتبطستبنمش"}';
 
     // * parsing textJSON variable so that each string in the JSON is chnged to an object
     const text = JSON.parse(textJSON);
@@ -177,7 +177,7 @@ describe('Creating public channels with different characters and text to verify 
         cy.archiveChannel(randomString);
     });
 
-    it('should create a public channel with hirigana as a name and verify textarea placeholder', () => {
+    it('should create a public channel with hiragana as a name and verify textarea placeholder', () => {
         // * re-randomizing randomString variable
         // eslint-disable-next-line no-shadow
         var randomString = chance.string({
@@ -185,7 +185,7 @@ describe('Creating public channels with different characters and text to verify 
             pool: 'qwertyuiopasdfghjklzxcvbnm'});
 
         // 1. Select createPublicChannel button and type channel name
-        cy.createPublicChannel(text.hirigana);
+        cy.createPublicChannel(text.hiragana);
 
         // 2. Set name in URL
         cy.get('#setURL').focus().type(randomString);
@@ -197,7 +197,7 @@ describe('Creating public channels with different characters and text to verify 
         cy.visit('/ad-1/channels/' + randomString);
 
         // * Check that placeholder is accurately named and visible within the textbox
-        cy.get('#post_textbox').should('have.attr', 'placeholder', 'Write to ' + text.hirigana).and('be.visible');
+        cy.get('#post_textbox').should('have.attr', 'placeholder', 'Write to ' + text.hiragana).and('be.visible');
 
         // 5. Type "test" into the textbox
         cy.get('#post_textbox').focus().type('test');
@@ -212,7 +212,7 @@ describe('Creating public channels with different characters and text to verify 
 
 describe('Creating private channels with different characters and text to verify textarea placeholder', () => {
     // * creating json variable
-    const textJSON = '{"emoji": "💀👻👽", "currency": "¶¥£", "hirigana": "かさたなはまや", "arabic": "ينتبطستبنمش"}';
+    const textJSON = '{"emoji": "💀👻👽", "currency": "¶¥£", "hiragana": "かさたなはまや", "arabic": "ينتبطستبنمش"}';
 
     // * parsing textJSON variable so that each string in the JSON is chnged to an object
     const text = JSON.parse(textJSON);
@@ -374,7 +374,7 @@ describe('Creating private channels with different characters and text to verify
         cy.archiveChannel(randomString);
     });
 
-    it('should create a private channel with hirigana as a name and verify textarea placeholder', () => {
+    it('should create a private channel with hiragana as a name and verify textarea placeholder', () => {
         // * re-randomizing randomString variable
         // eslint-disable-next-line no-shadow
         var randomString = chance.string({
@@ -382,7 +382,7 @@ describe('Creating private channels with different characters and text to verify
             pool: 'qwertyuiopasdfghjklzxcvbnm'});
 
         // 1. Select createPrivateChannel button and type channel name
-        cy.createPrivateChannel(text.hirigana);
+        cy.createPrivateChannel(text.hiragana);
 
         // 2. Set name in URL
         cy.get('#setURL').focus().type(randomString);
@@ -394,7 +394,7 @@ describe('Creating private channels with different characters and text to verify
         cy.visit('/ad-1/channels/' + randomString);
 
         // * Check that placeholder is accurately named and visible within the textbox
-        cy.get('#post_textbox').should('have.attr', 'placeholder', 'Write to ' + text.hirigana).and('be.visible');
+        cy.get('#post_textbox').should('have.attr', 'placeholder', 'Write to ' + text.hiragana).and('be.visible');
 
         // 5. Type "test" into the textbox
         cy.get('#post_textbox').focus().type('test');
