@@ -385,6 +385,7 @@ Cypress.Commands.add('getCurrentChannelId', () => {
     return cy.get('#channel-header').invoke('attr', 'data-channelid');
 });
 
+// Create a public channel
 Cypress.Commands.add('createPublicChannel', (channelName) => {
     cy.get('#createPublicChannel').click();
     cy.get('#public').should('be.checked');
@@ -392,6 +393,7 @@ Cypress.Commands.add('createPublicChannel', (channelName) => {
     cy.get('#createChannel').click();
 });
 
+// Create a private channel
 Cypress.Commands.add('createPrivateChannel', (channelName) => {
     cy.get('#createPrivateChannel').click();
     cy.get('#private').should('be.checked');
@@ -399,6 +401,7 @@ Cypress.Commands.add('createPrivateChannel', (channelName) => {
     cy.get('#createChannel').click();
 });
 
+// Create a direct message to a user
 Cypress.Commands.add('createDirectMessage', (username) => {
     cy.get('#createDirectMessage').click();
     cy.get('input[type=text]').click({force: true}).type(username, {force: true});
@@ -407,9 +410,15 @@ Cypress.Commands.add('createDirectMessage', (username) => {
     cy.get('#saveItems').click();
 });
 
+// Archive a channel to remove it
 Cypress.Commands.add('archiveChannel', (channelName) => {
     cy.visit('/ad-1/channels/' + channelName);
     cy.get('#channelHeaderDropdownButton').click();
     cy.get('#channelArchiveChannel').click();
     cy.get('.btn.btn-danger').click();
+});
+
+// Delete a direct message of a user. This will only work if the conversation is currently active.
+Cypress.Commands.add('deleteActiveDm', () => {
+    cy.get('.active').eq(1).find('.btn-close').click({force: true});
 });
