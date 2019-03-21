@@ -208,6 +208,38 @@ describe('Creating public channels with different characters and text to verify 
         // 6. Archive channel to prevent clutter
         cy.archiveChannel(randomString);
     });
+
+    it('should create a public channel with arabic as a name and verify textarea placeholder', () => {
+        // * re-randomizing randomString variable
+        // eslint-disable-next-line no-shadow
+        var randomString = chance.string({
+            length: 8,
+            pool: 'qwertyuiopasdfghjklzxcvbnm'});
+
+        // 1. Select createPublicChannel button and type channel name
+        cy.createPublicChannel(text.arabic);
+
+        // 2. Set name in URL
+        cy.get('#setURL').focus().type(randomString);
+
+        // 3. Select the Create Channel button
+        cy.get('#createChannelSetURL').click();
+
+        // 4. Visit newly created channel
+        cy.visit('/ad-1/channels/' + randomString);
+
+        // * Check that placeholder is accurately named and visible within the textbox
+        cy.get('#post_textbox').should('have.attr', 'placeholder', 'Write to ' + text.arabic).and('be.visible');
+
+        // 5. Type "test" into the textbox
+        cy.get('#post_textbox').focus().type('test');
+
+        // * Check that textbox contains only "test"
+        cy.get('#post_textbox').should('have.text', 'test').and('be.visible');
+
+        // 6. Archive channel to prevent clutter
+        cy.archiveChannel(randomString);
+    });
 });
 
 describe('Creating private channels with different characters and text to verify textarea placeholder', () => {
@@ -405,6 +437,38 @@ describe('Creating private channels with different characters and text to verify
         // 6. Archive channel to prevent clutter
         cy.archiveChannel(randomString);
     });
+
+    it('should create a public channel with arabic as a name and verify textarea placeholder', () => {
+        // * re-randomizing randomString variable
+        // eslint-disable-next-line no-shadow
+        var randomString = chance.string({
+            length: 8,
+            pool: 'qwertyuiopasdfghjklzxcvbnm'});
+
+        // 1. Select createPublicChannel button and type channel name
+        cy.createPublicChannel(text.arabic);
+
+        // 2. Set name in URL
+        cy.get('#setURL').focus().type(randomString);
+
+        // 3. Select the Create Channel button
+        cy.get('#createChannelSetURL').click();
+
+        // 4. Visit newly created channel
+        cy.visit('/ad-1/channels/' + randomString);
+
+        // * Check that placeholder is accurately named and visible within the textbox
+        cy.get('#post_textbox').should('have.attr', 'placeholder', 'Write to ' + text.arabic).and('be.visible');
+
+        // 5. Type "test" into the textbox
+        cy.get('#post_textbox').focus().type('test');
+
+        // * Check that textbox contains only "test"
+        cy.get('#post_textbox').should('have.text', 'test').and('be.visible');
+
+        // 6. Archive channel to prevent clutter
+        cy.archiveChannel(randomString);
+    });
 });
 
 describe('Creating direct messages with different users to check users name in textarea placeholder', () => {
@@ -436,7 +500,7 @@ describe('Creating direct messages with different users to check users name in t
         cy.focused().clear();
 
         // 4. Remove users channel from Direct Messages list
-        cy.get('.active').eq(1).find('.btn-close').click({force: true});
+        cy.deleteActiveDm();
     });
 
     it('should select two users for direct messaging', () => {
@@ -476,6 +540,6 @@ describe('Creating direct messages with different users to check users name in t
         cy.focused().clear();
 
         // 7. Remove the 2 user channel from the Direct Messages list
-        cy.get('.active').eq(1).find('.btn-close').click({force: true});
+        cy.deleteActiveDm();
     });
 });
