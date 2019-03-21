@@ -399,9 +399,11 @@ Cypress.Commands.add('createPrivateChannel', (channelName) => {
     cy.get('#createChannel').click();
 });
 
-Cypress.Commands.add('createDirectMessage', (userName) => {
-    cy.get('#directChannel').click();
-    cy.get('#selectItems').focus().type(userName);
+Cypress.Commands.add('createDirectMessage', (username) => {
+    cy.get('#createDirectMessage').click();
+    cy.get('input[type=text]').click({force: true}).type(username, {force: true});
+    cy.get('#saveItems').click();
+    cy.get('.more-modal__row').eq(0).click();
     cy.get('#saveItems').click();
 });
 
