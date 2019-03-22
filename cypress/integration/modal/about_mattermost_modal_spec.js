@@ -85,7 +85,7 @@ describe('Main Menu > About Mattermost', () => {
     });
 
     it('should check \'About Mattermost\' link and verify URL redirection', () => {
-        // 1 * Checks the 'about.mattermost.com' or the 'mattermost.org) link depending on which edition is being tested
+        // * Checks the 'about.mattermost.com' or the 'mattermost.org) link depending on which edition is being tested
         // eslint-disable-next-line max-nested-callbacks
         cy.get('.about-modal__footer').then((footerLink) => {
             if (footerLink.text().includes('Learn more about Enterprise Edition at about.mattermost.com')) {
@@ -144,7 +144,6 @@ describe('Main Menu > About Mattermost', () => {
                 cy.get('.about-modal__links > a').eq(1).should('have.prop', 'href', 'https://about.mattermost.com/default-privacy-policy/');
             }
         });
-
     });
 
     it('should check the Privacy Policy link and verify URL redirection', () => {
