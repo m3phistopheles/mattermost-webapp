@@ -102,6 +102,18 @@ describe('Main Menu > About Mattermost', () => {
         });
     });
 
+        it('should check the \'About Mattermost\' URL', () => {
+            // * Checking the About URL to make sure that it's the correct URL according to specific MM edition
+            // eslint-disable-next-line max-nested-callbacks
+            cy.get('.about-modal__title').then((title) => {
+                if (title.text().includes('Enterprise Edition')) {
+                    cy.get('.about-modal__footer > div > a').should('have.prop', 'href', 'http://about.mattermost.com/');
+                } else {
+                    cy.get('.about-modal__footer > div > a').should('have.prop', 'href', 'http://www.mattermost.org/');
+                }
+            });
+        });
+
     it('should check the Terms of Service URL', () => {
         // * Checking the TOS URL to make sure that it's the correct URL according to specific MM edition
         // eslint-disable-next-line max-nested-callbacks
